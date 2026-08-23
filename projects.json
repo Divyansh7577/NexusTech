@@ -1,27 +1,37 @@
 {
   "branches": [
     {
-      "label": "Minecraft",
-      "projects": [
-        { "name": "Crystal Ville SMP", "desc": "A survival server for me and my friends — not public.", "link": "", "status": "private" },
-        { "name": "CrystalCore", "desc": "Custom Paper plugin powering the server's economy and role system.", "link": "", "status": "building" }
-      ]
-    },
-    {
       "label": "Web & Apps",
       "projects": [
-        { "name": "Crystal Ville Website", "desc": "Staff applications, ban appeals, and admin tools — private to the server.", "link": "", "status": "private" },
-        { "name": "Nexus Calculate", "desc": "A free, offline Android calculator — no ads, no store required.", "link": "/nexus-calculate/", "status": "live" },
-        { "name": "Nook", "desc": "A Discord-style group chat app built in React.", "link": "", "status": "archived" },
-        { "name": "Varnan", "desc": "Generates YouTube video descriptions using the Anthropic API.", "link": "", "status": "archived" }
+        {
+          "name": "Nexus Calculate",
+          "desc": "A free, offline Android calculator — no ads, no store required.",
+          "link": "/nexus-calculate/",
+          "status": "live"
+        },
+        {
+          "name": "Nook",
+          "desc": "A Discord-style group chat app built in React.",
+          "link": "",
+          "status": "building"
+        },
+        {
+          "name": "Varnan",
+          "desc": "Generates YouTube video descriptions using the Anthropic API.",
+          "link": "",
+          "status": "building"
+        }
       ]
     },
     {
       "label": "Bots & Themes",
       "projects": [
-        { "name": "Crystal Ville Bot", "desc": "Moderation, tickets, and member welcoming — private to the server's Discord.", "link": "", "status": "private" },
-        { "name": "NexusTheme", "desc": "A free public Pterodactyl panel theme with a neon-blue aesthetic.", "link": "https://github.com/Divyansh7577/NexusTheme", "status": "live" },
-        { "name": "CrystalTheme", "desc": "A second Pterodactyl theme, currently being fitted to a React frontend.", "link": "", "status": "building" }
+        {
+          "name": "NexusTheme",
+          "desc": "A free public Pterodactyl panel theme with a neon-blue aesthetic.",
+          "link": "https://github.com/Divyansh7577/NexusTheme",
+          "status": "building"
+        }
       ]
     }
   ]
