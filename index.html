@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Tech — Everything We've Built</title>
+<meta name="description" content="A growing tree of everything Nexus Tech has built: plugins, bots, apps, and themes — all made from a phone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --soil: #0e150f;
+    --soil-2: #121b13;
+    --bark: #1b241a;
+    --bark-line: rgba(232,176,75,0.14);
+    --moss: #6f9a72;
+    --moss-dim: #4d6b50;
+    --gold: #e8b04b;
+    --gold-bright: #f4c96b;
+    --cream: #efe9d8;
+    --muted: #94a08c;
+    --muted-dim: #5e6a58;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--soil);
+    color: var(--cream);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    position:relative;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 700px 500px at 20% 0%, rgba(111,154,114,0.10), transparent 60%),
+      radial-gradient(ellipse 600px 500px at 90% 30%, rgba(232,176,75,0.06), transparent 55%);
+    pointer-events:none; z-index:0;
+  }
+  .wrap{ max-width: 920px; margin:0 auto; padding: 0 24px; position:relative; z-index:1; }
+
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:22px 24px; max-width:920px; margin:0 auto; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--cream); }
+  .brand-mark{ font-family:'JetBrains Mono'; font-size:16px; color:var(--gold); }
+  .brand-name{ font-family:'Fraunces'; font-weight:600; font-size:15px; letter-spacing:0.01em; }
+  .nav-link{ color:var(--muted); text-decoration:none; font-size:13.5px; font-weight:500; border:1px solid var(--bark-line); padding:8px 16px; border-radius:100px; transition: all .2s ease; }
+  .nav-link:hover{ color:var(--cream); border-color:var(--gold); }
+
+  .hero{ padding:56px 0 40px; text-align:center; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono'; font-size:11.5px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--moss);
+    border:1px solid rgba(111,154,114,0.3); background:rgba(111,154,114,0.07);
+    padding:6px 14px; border-radius:100px; margin-bottom:26px;
+  }
+  h1{ font-family:'Fraunces'; font-weight:700; font-size:clamp(30px,6vw,46px); letter-spacing:-0.01em; line-height:1.12; margin-bottom:16px; }
+  h1 em{ font-style:normal; color:var(--gold-bright); }
+  .hero p.sub{ color:var(--muted); font-size:16.5px; max-width:480px; margin:0 auto; }
+
+  .tree{ padding: 20px 0 10px; }
+  .root-node{ display:flex; flex-direction:column; align-items:center; text-align:center; margin-bottom: 6px; }
+  .root-badge{
+    font-family:'Fraunces'; font-weight:700; font-size:18px;
+    background: var(--bark); border:1px solid var(--gold); color:var(--gold-bright);
+    padding: 12px 26px; border-radius: 100px;
+    box-shadow: 0 0 0 6px rgba(232,176,75,0.06);
+  }
+  .trunk{ width:2px; height:34px; background: linear-gradient(var(--gold), var(--moss-dim)); margin:0 auto; }
+
+  .branches{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+  .branch{ display:flex; flex-direction:column; align-items:center; padding: 0 10px; }
+  .branch-connector{ width:100%; height:22px; position:relative; }
+  .branch-connector::before{ content:''; position:absolute; top:0; left:50%; width:1px; height:100%; background: var(--moss-dim); }
+  .branches::before{ content:''; position:absolute; top:0; left: calc(100%/6); right: calc(100%/6); height:1px; background: var(--moss-dim); }
+  .branch-label{ font-family:'JetBrains Mono'; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--moss); margin-bottom:14px; text-align:center; }
+  .leaves{ display:flex; flex-direction:column; gap:12px; width:100%; }
+
+  .leaf{
+    background: var(--bark); border:1px solid var(--bark-line); border-radius:14px;
+    padding: 16px 16px; text-decoration:none; color: var(--cream);
+    display:block; transition: all .18s ease; position:relative;
+  }
+  .leaf:hover{ border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(0,0,0,0.5); }
+  .leaf .name{ font-family:'Fraunces'; font-weight:600; font-size:15px; margin-bottom:4px; }
+  .leaf .desc{ color:var(--muted); font-size:12.5px; line-height:1.5; }
+  .leaf .tag{ display:inline-block; margin-top:8px; font-family:'JetBrains Mono'; font-size:10px; color: var(--gold); letter-spacing:0.04em; text-transform:uppercase; }
+  .leaf .tag.live::before{ content:'● '; color:#7fbf7f; }
+  .leaf .tag.building::before{ content:'● '; color:var(--gold); }
+  .leaf .tag.archived::before{ content:'● '; color:var(--muted-dim); }
+  .leaf .tag.private::before{ content:'● '; color:#c77b5f; }
+  .leaf.no-link{ cursor:default; }
+  .leaf.no-link:hover{ transform:none; border-color:var(--bark-line); box-shadow:none; }
+
+  @media (max-width: 720px){
+    .branches{ grid-template-columns: 1fr; gap: 34px; }
+    .branches::before{ display:none; }
+    .branch-connector{ height:20px; }
+  }
+
+  .about{ margin-top: 68px; padding: 34px 0; border-top:1px solid var(--bark-line); display:flex; gap:20px; align-items:center; flex-wrap:wrap; }
+  .about-avatar{
+    width:56px; height:56px; border-radius:50%; flex-shrink:0;
+    background: linear-gradient(135deg, var(--gold), var(--moss));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces'; font-weight:700; font-size:19px; color:var(--soil);
+  }
+  .about-text{ flex:1; min-width:220px; }
+  .about-text .name{ font-family:'Fraunces'; font-weight:700; font-size:17px; }
+  .about-text p{ color:var(--muted); font-size:13.5px; margin-top:4px; }
+  .yt-btn{
+    display:inline-flex; align-items:center; gap:9px; background:#FF0033; color:#fff;
+    text-decoration:none; font-weight:700; font-size:13.5px; font-family:'Inter';
+    padding:12px 20px; border-radius:11px; white-space:nowrap;
+  }
+  .yt-btn svg{ width:16px; height:16px; }
+
+  footer{ border-top:1px solid var(--bark-line); padding: 26px 24px 34px; text-align:center; color:var(--muted-dim); font-size:12.5px; }
+  footer a{ color:var(--muted); text-decoration:none; }
+  footer a:hover{ color:var(--gold); }
+
+  .load-msg{ text-align:center; color:var(--muted-dim); font-family:'JetBrains Mono'; font-size:12px; padding:20px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="brand">
+    <span class="brand-mark">◈</span>
+    <span class="brand-name">Nexus Tech</span>
+  </a>
+  <a href="https://youtube.com/@duogamersofficial-c3s?si=xdo7zaYhl1ZDQFOF" class="nav-link" target="_blank" rel="noopener">Duo Gamerz X ↗</a>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">Built entirely on a phone</div>
+    <h1>Everything grows from <em>one root</em>.</h1>
+    <p class="sub">A running record of what we've built — servers, plugins, bots, apps, and themes. Tap any leaf to visit it.</p>
+  </section>
+
+  <section class="tree">
+    <div class="root-node">
+      <div class="root-badge">Nexus Tech</div>
+    </div>
+    <div class="trunk"></div>
+
+    <div class="branches" id="branches">
+      <div class="load-msg">Loading the tree…</div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-avatar">NT</div>
+    <div class="about-text">
+      <div class="name">Nexus Tech</div>
+      <p>Founded by Divyansh Sharma, the voice behind Duo Gamerz X. Everything above was written and shipped from a phone.</p>
+    </div>
+    <a href="https://youtube.com/@duogamersofficial-c3s?si=xdo7zaYhl1ZDQFOF" class="yt-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.23-1.64-.94-2.36c-.9-.94-1.9-.95-2.36-1C17 2.5 12 2.5 12 2.5h-.02s-5 0-8.18.34c-.46.05-1.46.06-2.36 1C.73 4.56.5 6.2.5 6.2S.27 8.13.27 10.06v1.87c0 1.93.23 3.86.23 3.86s.23 1.64.94 2.36c.9.94 2.08.91 2.6 1.01 1.9.18 8.06.34 8.06.34s5.02-.01 8.2-.34c.46-.05 1.46-.06 2.36-1 .71-.72.94-2.36.94-2.36s.23-1.93.23-3.86v-1.87c0-1.93-.23-3.86-.23-3.86zM9.75 14.85V7.44l6.5 3.71-6.5 3.7z"/></svg>
+      Subscribe
+    </a>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 Nexus Tech · <a href="https://youtube.com/@duogamersofficial-c3s?si=xdo7zaYhl1ZDQFOF" target="_blank" rel="noopener">Duo Gamerz X</a> · <a href="/admin.html">Admin</a>
+</footer>
+
+<script>
+  const STATUS_LABEL = { live: 'Live', building: 'In development', archived: 'Shelved', private: 'Private' };
+
+  fetch('/projects.json')
+    .then(r => r.json())
+    .then(data => render(data.branches))
+    .catch(() => {
+      document.getElementById('branches').innerHTML =
+        '<div class="load-msg">Couldn\'t load projects.json — make sure it\'s uploaded alongside index.html.</div>';
+    });
+
+  function render(branches){
+    const container = document.getElementById('branches');
+    container.innerHTML = '';
+    branches.forEach(branch => {
+      const branchEl = document.createElement('div');
+      branchEl.className = 'branch';
+
+      const connector = document.createElement('div');
+      connector.className = 'branch-connector';
+      branchEl.appendChild(connector);
+
+      const label = document.createElement('div');
+      label.className = 'branch-label';
+      label.textContent = branch.label;
+      branchEl.appendChild(label);
+
+      const leaves = document.createElement('div');
+      leaves.className = 'leaves';
+
+      branch.projects.forEach(p => {
+        const hasLink = p.link && p.link.trim() !== '';
+        const el = document.createElement(hasLink ? 'a' : 'div');
+        el.className = 'leaf' + (hasLink ? '' : ' no-link');
+        if (hasLink){
+          el.href = p.link;
+          if (p.link.startsWith('http')){ el.target = '_blank'; el.rel = 'noopener'; }
+        }
+        const statusClass = STATUS_LABEL[p.status] ? p.status : 'building';
+        el.innerHTML =
+          '<div class="name"></div>' +
+          '<div class="desc"></div>' +
+          '<span class="tag ' + statusClass + '"></span>';
+        el.querySelector('.name').textContent = p.name;
+        el.querySelector('.desc').textContent = p.desc;
+        el.querySelector('.tag').textContent = STATUS_LABEL[statusClass] || p.status;
+        leaves.appendChild(el);
+      });
+
+      branchEl.appendChild(leaves);
+      container.appendChild(branchEl);
+    });
+  }
+</script>
+
+</body>
+</html>
