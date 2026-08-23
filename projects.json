@@ -20,6 +20,12 @@
           "desc": "Generates YouTube video descriptions using the Anthropic API.",
           "link": "",
           "status": "building"
+        },
+        {
+          "name": "Nexus Scan Pro",
+          "desc": "A free, ad-free web tool to generate custom QR codes with logos and scan them instantly. ",
+          "link": "https://scanpro.nexustech.dpdns.org",
+          "status": "live"
         }
       ]
     },
